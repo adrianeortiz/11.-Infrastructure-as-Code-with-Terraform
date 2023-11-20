@@ -4,15 +4,15 @@ pipeline {
     agent any
     environment {
         AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_access_key')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws_secret_access_key')
     }
     stages {
         stage('provision cluster') {
             environment {
                 TF_VAR_env_prefix = "dev"
-                TF_VAR_k8s_version = "1.21"
+                TF_VAR_k8s_version = "1.28"
                 TF_VAR_cluster_name = "my-cluster"
-                TF_VAR_region = "eu-west-3"
+                TF_VAR_region = "eu-central-1"
             }
             steps {
                 script {

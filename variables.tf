@@ -3,7 +3,7 @@ variable env_prefix {
 }
 
 variable k8s_version {
-  default = "1.20"
+  default = "1.28"
 }
 
 variable cluster_name {
@@ -11,5 +11,5 @@ variable cluster_name {
 }
 
 variable region {
-  default = "eu-west-1"
+  default = "eu-central-1"
 }
