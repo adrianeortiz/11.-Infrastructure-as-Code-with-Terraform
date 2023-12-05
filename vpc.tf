@@ -8,12 +8,13 @@ terraform {
 
 provider "aws" {
   region  = var.region
+  version = "~> 5.0"
 }
 
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = var.cluster_name # "my-eks-${random_string.suffix.result}"
+  cluster_name = var.cluster_name 
 }
 
 resource "random_string" "suffix" {

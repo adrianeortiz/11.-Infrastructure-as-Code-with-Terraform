@@ -11,7 +11,7 @@ volumePermissions:
 
 secondary:
   # 1 primary and 2 secondary replicas
-  replicaCount: 1
+  replicaCount: 2
   persistence:
     accessModes: ["ReadWriteOnce"]
     # storage class for EKS volumes

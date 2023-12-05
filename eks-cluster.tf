@@ -13,11 +13,8 @@ module "eks" {
   tags = {
     environment = "bootcamp"
   }
-
-  enable_irsa = true
-
+  # starting from EKS 1.23 CSI plugin is needed for volume provisioning.
   cluster_addons = {
-    # starting from EKS 1.23 CSI plugin is needed for volume provisioning.
     aws-ebs-csi-driver = { most_recent = true }
   } 
 
@@ -30,11 +27,12 @@ module "eks" {
 
       min_size     = 1
       max_size     = 3
-      desired_size = 1
+      desired_size = 3
 
       tags = {
         Name = "${var.env_prefix}"
       }   
+      # EBS CSI Driver policy
       iam_role_additional_policies = {
         AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
       }  
