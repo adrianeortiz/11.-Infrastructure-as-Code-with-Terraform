@@ -17,23 +17,8 @@ module "eks" {
   enable_irsa = true
 
   cluster_addons = {
-      coredns = {
-      most_recent                 = true
-      resolve_conflicts_on_create = "OVERWRITE"
-    }
-    kube-proxy = {
-      most_recent                 = true
-      resolve_conflicts_on_create = "OVERWRITE"
-    }
-    vpc-cni = {
-      most_recent                 = true
-      resolve_conflicts_on_create = "OVERWRITE"
-    } 
     # starting from EKS 1.23 CSI plugin is needed for volume provisioning.
-    aws-ebs-csi-driver = {
-      service_account_role_arn    = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.cluster_name}-ebs-csi-controller"
-      resolve_conflicts_on_create = "OVERWRITE"
-    }
+    aws-ebs-csi-driver = { most_recent = true }
   } 
 
   # worker nodes
@@ -49,10 +34,12 @@ module "eks" {
 
       tags = {
         Name = "${var.env_prefix}"
-      }
+      }   
+      iam_role_additional_policies = {
+        AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+      }  
     }
   }
-
   fargate_profiles = {
     profile = {
       name = "my-fargate-profile"
@@ -64,3 +51,5 @@ module "eks" {
     }
   }
 }
+
+  

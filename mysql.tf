@@ -40,6 +40,3 @@ resource "helm_release" "mysql" {
     value = true
   }
 }
-
-
-
