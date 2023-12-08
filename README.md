@@ -1,7 +1,7 @@
-#### This project is for the Devops Bootcamp Exercise for:
-#### "Infrastructure as Code with Terraform " 
+### This project is for the Devops Bootcamp Exercise for:
+### "Infrastructure as Code with Terraform " 
 
-### IMPORTANT - please read the following:
+#### IMPORTANT - please read the following:
 
 The following two lines must be added to your EKS Terraform file to ensure storage is configured correctly:
 
@@ -10,6 +10,7 @@ The following two lines must be added to your EKS Terraform file to ensure stora
 `cluster_addons = {aws-ebs-csi-driver = {most_recent = true}}`
 
 2. As part of node group configuration:
+
 `iam_role_additional_policies = {AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"}` 
 
 **Versions:**
