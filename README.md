@@ -1,5 +1,4 @@
-### This project is for the Devops Bootcamp Exercise for:
-### "Infrastructure as Code with Terraform " 
+### This project is for the Devops Bootcamp Exercise for "Infrastructure as Code with Terraform" 
 
 #### IMPORTANT - please read the following:
 
