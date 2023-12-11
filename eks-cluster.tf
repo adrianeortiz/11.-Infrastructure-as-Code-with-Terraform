@@ -1,11 +1,9 @@
-data "aws_caller_identity" "current" {}
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.20.0"
 
   cluster_name                   = var.cluster_name
-  cluster_version                = "1.28"
+  cluster_version                = var.k8s_version
   cluster_endpoint_public_access = true
 
   subnet_ids = module.vpc.private_subnets

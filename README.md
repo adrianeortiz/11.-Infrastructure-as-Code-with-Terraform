@@ -31,6 +31,6 @@ The following two lines must be added to your EKS Terraform file to ensure stora
 - cluster_name = "my-cluster"
 - region = "eu-central-1"
 
-**To execute the TF script:**
+To execute the TF script:
     `terraform init`
     `terraform apply -var-file="dev.tfvars"`
