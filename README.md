@@ -42,6 +42,8 @@ iam_role_additional_policies = {
 - region = "eu-central-1"
 
 To execute the TF script:
+
     `terraform init`
+
     `terraform apply -var-file="dev.tfvars"`
     
