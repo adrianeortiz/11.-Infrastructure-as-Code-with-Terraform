@@ -13,7 +13,7 @@ module "eks" {
   }
   # starting from EKS 1.23 CSI plugin is needed for volume provisioning.
   cluster_addons = {
-    aws-ebs-csi-driver = { most_recent = true }
+    aws-ebs-csi-driver = {}
   } 
 
   # worker nodes

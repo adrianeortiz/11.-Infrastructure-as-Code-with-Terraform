@@ -4,7 +4,7 @@
 
 Since K8s version 1.23 an additional driver is required to provision K8s storage in AWS. K8s volumes attach to cloud platform's storage - for AWS this means they attach to EBS volumes. The EBS CSI driver is responsible for handling EBS storage tasks and is not installed by default so without the installation of this driver, K8s volumes cannot be attached to storage in AWS. 
 
-The node groups in this project are responsible for creating and attaching these volumes, so for this reason, as well as needing the driver to be installed we need to add a permissions policy to the node group so it can request these changes successfully through AWS - this is defined in a dedicated IAM role.
+Processes in the node groups are responsible for creating and attaching these volumes. So for this reason, we need to add a permissions policy to the node group so it can request these changes successfully through AWS - this is defined as a managed AWS policy called: AmazonEBSCSIDriverPolicy, which we are attaching to the node groups.
 
 The following two lines must be added to your EKS Terraform file to ensure persistent storage using EBS CSI driver is installed and the node group permissions are configured correctly:
 
@@ -12,7 +12,7 @@ The following two lines must be added to your EKS Terraform file to ensure persi
 # 1. Including the add-on as part of EKS module:
 
 cluster_addons = {
-    aws-ebs-csi-driver = {most_recent = true}
+    aws-ebs-csi-driver = {}
 }
 
 # 2. Adding associated permissions as part of node group configuration:
