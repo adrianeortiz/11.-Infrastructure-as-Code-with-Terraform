@@ -1,20 +1,19 @@
 terraform {
   backend "s3" {
-    bucket = "my-bucket-exercise"
+    bucket = "my-bucket-twn-exercise"
     key    = "myapp/state.tfstate"
-    region  = "eu-west-3"
+    region  = "eu-central-1"
   }
 }
 
 provider "aws" {
-  # version = ">= 2.28.1"
   region  = var.region
 }
 
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = var.cluster_name # "my-eks-${random_string.suffix.result}"
+  cluster_name = var.cluster_name 
 }
 
 resource "random_string" "suffix" {
@@ -24,7 +23,7 @@ resource "random_string" "suffix" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.11.3"
+  version = "5.2.0"
 
   name                 = "my-vpc"
   cidr                 = "10.0.0.0/16"

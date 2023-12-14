@@ -10,9 +10,9 @@ pipeline {
         stage('provision cluster') {
             environment {
                 TF_VAR_env_prefix = "dev"
-                TF_VAR_k8s_version = "1.21"
+                TF_VAR_k8s_version = "1.28"
                 TF_VAR_cluster_name = "my-cluster"
-                TF_VAR_region = "eu-west-3"
+                TF_VAR_region = "eu-central-1"
             }
             steps {
                 script {
